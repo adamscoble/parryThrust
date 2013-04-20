@@ -1,3 +1,5 @@
+/* parryThrust by Adam Scoble - https://github.com/adamscoble/parryThrust - adam.scoble@gmail.com */
+
 // Adam Scoble presents
 // # jquery.parryThrust-1.0.0.js
 // Click through transparent areas of images and
