@@ -24,7 +24,7 @@
 // image elements. e.g.
 // 
 // ```js
-// $('#images').parryThrust();
+// $('#images').parryThrust({callback: imageClicked});
 // ```
 // 
 // ```html
@@ -35,6 +35,12 @@
 //     <img src="image04.jpg" />
 //     <img src="image05.jpg" />
 // </div>
+// ```
+// 
+// ```
+// function imageClicked(){
+//     console.log('image clicked: ', this);
+// }
 // ```
 // 
 // It is advisable that you create a new parryThrust
@@ -48,7 +54,8 @@
 // 
 // ```js
 // $('#images').parryThrust({
-//     imgSelector: '.image'
+//     imgSelector: '.image',
+//     callback: imageClicked
 // });
 // ```
 // 
@@ -62,13 +69,20 @@
 // </div>
 // ```
 // 
+// ```
+// function imageClicked(){
+//     console.log('image clicked: ', this);
+// }
+// ```
+// 
 // If your images are not sibblings in your hierarchy
 // you need to provide a selector for the closest ancestors, e.g.
 // 
 // ```js
 // $('#images').parryThrust({
 //     imgSelector: '.image',
-//     parentSelector: '.ancestor'
+//     parentSelector: '.ancestor',
+//     callback: imageClicked
 // });
 // ```
 // 
@@ -84,6 +98,12 @@
 //         <img src="image03.jpg" class="image" />
 //     </div>
 // </div>
+// ```
+// 
+// ```
+// function imageClicked(){
+//     console.log('image clicked: ', this);
+// }
 // ```
 
 (function($){

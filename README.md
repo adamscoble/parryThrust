@@ -15,7 +15,7 @@ http://caniuse.com/#feat=canvas
 ## Usage
 Instantiate the plugin on an element containing all image elements. e.g.
 
-    $('#images').parryThrust();
+    $('#images').parryThrust({callback: imageClicked});
     
     <div id="images">
         <img src="image01.jpg" />
@@ -25,12 +25,17 @@ Instantiate the plugin on an element containing all image elements. e.g.
         <img src="image05.jpg" />
     </div>
 
+    function imageClicked(){
+    	console.log('image clicked: ', this);
+    }
+
 It is advisable that you create a new parryThrust for each group of overlapping images, rather than one for the entire page. While it will work, a lot of unnecessary processing will occur.
 
 You can also use background-images, or a combination. In this case, you will need to pass a common selector for all image objects to be included, e.g.
 
 	$('#images').parryThrust({
-    	imgSelector: '.image'
+    	imgSelector: '.image',
+    	callback: imageClicked
 	});
 
 	<div id="images">
@@ -41,11 +46,16 @@ You can also use background-images, or a combination. In this case, you will nee
 	    <img src="image05.jpg" class="image" />
 	</div>
 
+	function imageClicked(){
+    	console.log('image clicked: ', this);
+    }
+
 If your images are not sibblings in your hierarchy you need to provide a selector for the closest ancestors, e.g.
 
 	$('#images').parryThrust({
 	    imgSelector: '.image',
-	    parentSelector: '.ancestor'
+	    parentSelector: '.ancestor',
+	    callback: imageClicked
 	});
 
 	<div id="images">
@@ -59,6 +69,10 @@ If your images are not sibblings in your hierarchy you need to provide a selecto
 	        <img src="image03.jpg" class="image" />
 	    </div>
 	</div>
+
+	function imageClicked(){
+    	console.log('image clicked: ', this);
+    }
 
 ## Options
 `imgSelector: 'img'` Selector for image elements to be processed by the plugin  
@@ -78,5 +92,5 @@ If your images are not sibblings in your hierarchy you need to provide a selecto
 `callback: null` A function to run within the context of the bottom-most clicked image element.  
 
 `nonImageCallback: null` A function to run within the context of the bottom-most non-valid (not one of the images) clicked element.
-  
+
 `logTimeTaken: false` Logs in the console how long it took to find the bottom most valid image  
